@@ -1,1 +1,0 @@
-gcc my.cpp -o my.exe
