@@ -1,0 +1,7 @@
+6
+touch yyh
+touch yyhtql
+rename yyh yyhnb
+touch qwq
+rename qwq qaq
+ls
