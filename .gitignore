@@ -31,3 +31,12 @@
 *.out
 *.app
 *.*~
+
+.idea
+*.iml
+target
+.project
+*.pyc
+.gitignore.swp
+test.jpg
+__pycache__
