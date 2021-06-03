@@ -8,33 +8,25 @@
 
 using namespace std;
 int N;
+int data[80005];
+long long ans;
+stack<int> stk;
+
 int main() {
-	
     scanf("%d", &N);
     if(N<2) {
         printf("0");
         return 0;
     }
-    vector<int> data(N);
-    vector<int> ans;
-    for(int i=0; i<N; ++i) {
+    for(int i=1; i<=N; ++i) {
         scanf("%d", &data[i]);
     }
-    stack<int> priority_stack;
-
-    for(int i=N-1; i>=0; i--) {
-        int tmp = 0;
-        int j = 0;
-        while(!priority_stack.empty() && priority_stack.top() < data[i]) {
-            tmp += 1 + ans[ans.size() - 1 - j];
-            j += ans[ans.size() - 1 - j];
-            j++;
-            priority_stack.pop();
-        }    
-        ans.push_back(tmp);
-        priority_stack.push(data[i]);
+    for(int i=N; i>0; i--) {
+        while(!stk.empty() && data[stk.top()] < data[i])
+            stk.pop();
+        ans += stk.empty()? N-i: stk.top() - i - 1;
+        stk.push(i);
     }
-    int sum = accumulate(ans.begin(), ans.end(), 0);
-    printf("%d", sum);
+    cout<<ans<<endl;
 	return 0;
 }
